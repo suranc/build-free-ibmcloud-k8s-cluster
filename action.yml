@@ -1,0 +1,27 @@
+name: '(Re)build A Free IBM Cloud Kubernetes Cluster'
+description: 'This action will build or delete and rebuild a free Kubernetes cluster in the IBM Cloud region of your choice'
+inputs:
+  ibmcloud-apikey:
+    description: 'API Key that can deploy to your IBM Cloud account'
+    required: true
+    default: 'World'
+  ibmcloud-region:
+    description: 'Region to deploy your k8s cluster into'
+    required: true
+    default: 'us-south'
+  cluster-name:
+    description: 'Name of the cluster to be (re)created'
+    required: true
+    default: 'mycluster-free'
+outputs:
+  ingress-ip:
+    description: 'The public IP address of the ingress controller service'
+  ingress-port:
+    description: 'The nodePort the ingress controller service is listening on'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.ibmcloud-apikey }}
+    - ${{ inputs.ibmcloud-region }}
+    - ${{ inputs.cluster-name }}
