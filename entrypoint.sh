@@ -14,4 +14,4 @@ echo "::set-output name=ingress-ip::$INGRESS_IP"
 echo "::set-output name=ingress-port::$INGRESS_PORT"
 
 # Output kubeconfig file
-echo "::set-output name=kubeconfig::$(echo -e 'line1:\n  line2:\n    - end: "test"')"
+echo "::set-output name=kubeconfig::$(echo -e 'line1:\n  line2:\n    - end: "test"'|base64)"
