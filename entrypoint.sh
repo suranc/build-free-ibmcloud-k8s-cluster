@@ -60,4 +60,4 @@ echo "::set-output name=ingress-ip::$INGRESS_IP"
 echo "::set-output name=ingress-port::$INGRESS_PORT"
 
 # Output kubeconfig file in base64
-echo "::set-output name=kubeconfig::$(cat ~/.kube/config|base64 -w 0)"
+echo "::set-output name=kubeconfig::$(kubectl config view --flatten=true|base64 -w 0)"
