@@ -1,12 +1,12 @@
 #!/bin/sh
 
 # GitHub Action Parameters
-export IBM_APIKEY="$1" # - IBM Cloud API Key
-export IBM_REGION="$2" # - IBM Cloud Region
+export IBMCLOUD_APIKEY="$1" # - IBM Cloud API Key
+export IBMCLOUD_REGION="$2" # - IBM Cloud Region
 export CLUSTER_NAME="$3" # - Name of cluster to be (re)deployed
 
 # Login to provided region using the provided API key
-ibmcloud login --apikey "$IBM_APIKEY" -r "$IBM_REGION"
+ibmcloud login --apikey "$IBMCLOUD_APIKEY" -r "$IBMCLOUD_REGION"
 
 # Delete existing cluster, if any, and wait for deletion to complete
 ibmcloud ks cluster rm -c "$CLUSTER_NAME" -f
@@ -17,7 +17,7 @@ do
 done
 
 # Set kubernetes endpoint to desired region, and create a new free cluster inside that region.  
-ibmcloud ks init --host "https://${IBM_REGION}.containers.cloud.ibm.com"
+ibmcloud ks init --host "https://${IBMCLOUD_REGION}.containers.cloud.ibm.com"
 ibmcloud ks cluster create classic --name "$CLUSTER_NAME"
 
 #Sleep for 10 seconds to give it time to start
