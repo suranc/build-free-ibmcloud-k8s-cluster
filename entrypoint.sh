@@ -15,7 +15,7 @@ ibmcloud login --apikey "$IBMCLOUD_APIKEY" -r "$IBMCLOUD_REGION"
 ibmcloud ks cluster rm -c "$CLUSTER_NAME" -f
 while [ $(ibmcloud ks cluster get -c "$CLUSTER_NAME" | egrep '^Name:' | awk '{print $2}') == "$CLUSTER_NAME" ]
 do
-    echo "Waiting for $CLUSTER_NAME deletion to complete..."
+    echo "Waiting for $CLUSTER_NAME to be deleted..."
     sleep 10
 done
 
@@ -27,9 +27,9 @@ ibmcloud ks cluster create classic --name "$CLUSTER_NAME"
 sleep 10
 
 # Poll for completion of the cluster creation
-while [ $(ibmcloud ks cluster get -c "$CLUSTER_NAME" | egrep '^State:' | awk '{print $2}') != 'normal' ]
+while [ $(ibmcloud ks cluster get -c "$CLUSTER_NAME" 2>/dev/null | egrep '^State:' | awk '{print $2}') != 'normal' ]
 do
-    echo waiting
+    echo "Creating new k8s cluster $CLUSTER_NAME"
     sleep 30
 done
 
