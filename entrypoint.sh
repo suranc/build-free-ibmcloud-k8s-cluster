@@ -8,6 +8,10 @@ export CLUSTER_NAME="$3" # - Name of cluster to be (re)deployed
 export INGRESS_IP="86.7.30.9"
 export INGRESS_PORT="5309"
 
+ibmcloud plugin install container-service
+
+ibmcloud ks -h
+
 cd ~; pwd
 ls -al ~
 whoami

@@ -19,7 +19,7 @@ outputs:
   ingress-port:
     description: 'The nodePort the ingress controller service is listening on'
   kubeconfig:
-    description: 'A kubeconfig file pointing to the newly created k8s cluster'
+    description: 'A base64 representation of a kubeconfig file pointing to the newly created k8s cluster'
 runs:
   using: 'docker'
   image: 'Dockerfile'
