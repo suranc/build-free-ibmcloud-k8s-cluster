@@ -1,4 +1,4 @@
-name: '(Re)build A Free IBM Cloud Kubernetes Cluster'
+name: 'Build A Free IBM Cloud Kubernetes Cluster'
 description: 'This action will build or delete and rebuild a free Kubernetes cluster in the IBM Cloud region of your choice'
 inputs:
   ibmcloud-apikey:
