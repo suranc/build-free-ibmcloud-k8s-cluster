@@ -5,6 +5,9 @@ export IBMCLOUD_APIKEY="$1" # - IBM Cloud API Key
 export IBMCLOUD_REGION="$2" # - IBM Cloud Region
 export CLUSTER_NAME="$3" # - Name of cluster to be (re)deployed
 
+# Install k8s plugin
+ibmcloud plugin install container-service
+
 # Login to provided region using the provided API key
 ibmcloud login --apikey "$IBMCLOUD_APIKEY" -r "$IBMCLOUD_REGION"
 
@@ -36,6 +39,8 @@ ibmcloud ks cluster config -c "$CLUSTER_NAME"
 
 # Install nginx ingress controller
 kubectl create ns ingress-nginx
+helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+helm repo update
 helm -n ingress-nginx install ingress-nginx ingress-nginx/ingress-nginx
 
 # Block until nginx ingress controller is ready
