@@ -37,6 +37,9 @@ done
 echo "Configuring kubectl..."
 ibmcloud ks cluster config -c "$CLUSTER_NAME"
 
+# Pause to let RBAC syncronize
+sleep 10
+
 # Install nginx ingress controller
 kubectl create ns ingress-nginx
 helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
@@ -57,4 +60,4 @@ echo "::set-output name=ingress-ip::$INGRESS_IP"
 echo "::set-output name=ingress-port::$INGRESS_PORT"
 
 # Output kubeconfig file in base64
-echo "::set-output name=kubeconfig::$(cat /root/.kube/config|base64)"
+echo "::set-output name=kubeconfig::$(cat ~/.kube/config|base64)"
