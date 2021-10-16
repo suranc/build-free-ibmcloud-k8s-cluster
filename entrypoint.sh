@@ -50,3 +50,6 @@ echo "Cluster $CLUSTER_NAME creation complete!"
 echo "Ingress is available at $INGRESS_IP:$INGRESS_PORT"
 echo "::set-output name=ingress-ip::$INGRESS_IP"
 echo "::set-output name=ingress-port::$INGRESS_PORT"
+
+# Output kubeconfig file
+echo "::set-output name=kubeconfig::$(cat /root/.kube/config)"
