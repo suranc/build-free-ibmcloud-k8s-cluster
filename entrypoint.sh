@@ -51,5 +51,5 @@ echo "Ingress is available at $INGRESS_IP:$INGRESS_PORT"
 echo "::set-output name=ingress-ip::$INGRESS_IP"
 echo "::set-output name=ingress-port::$INGRESS_PORT"
 
-# Output kubeconfig file
-echo "::set-output name=kubeconfig::$(cat /root/.kube/config)"
+# Output kubeconfig file in base64
+echo "::set-output name=kubeconfig::$(cat /root/.kube/config|base64)"
