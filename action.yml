@@ -18,6 +18,8 @@ outputs:
     description: 'The public IP address of the ingress controller service'
   ingress-port:
     description: 'The nodePort the ingress controller service is listening on'
+  kubeconfig:
+    description: 'A kubeconfig file pointing to the newly created k8s cluster'
 runs:
   using: 'docker'
   image: 'Dockerfile'
