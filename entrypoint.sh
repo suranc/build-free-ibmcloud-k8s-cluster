@@ -8,6 +8,10 @@ export CLUSTER_NAME="$3" # - Name of cluster to be (re)deployed
 export INGRESS_IP="86.7.30.9"
 export INGRESS_PORT="5309"
 
+cd ~; pwd
+ls -al ~
+whoami
+
 echo "Cluster $CLUSTER_NAME creation complete!"
 echo "Ingress is available at $INGRESS_IP:$INGRESS_PORT"
 echo "::set-output name=ingress-ip::$INGRESS_IP"
